@@ -1,0 +1,28 @@
+<div class="sidebar">
+	<nav class="sidenav">
+		<ul>
+			<li class="navgroup" ng-repeat="menu in roleMenuList" repeat-finish>
+				<a class="navlevel"><i><img src="img/menu.png"/></i>{{menu.name}}</a>
+				<ul class="navlist">
+					<li ng-repeat="subMenu in menu.subMenuList">
+						<a class="navitem" href="javascript:void(0)" ui-sref="{{subMenu.visitUrl}}">{{subMenu.name}}</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</div>
+<script type="text/javascript">
+	function initMenuAnimate() {
+		$('.navgroup').on('click', function(e) {
+			e.stopPropagation();
+			$(this).find('.navlist').slideToggle();
+		});
+		$('.navitem').on('click', function(e) {
+			e.stopPropagation();
+			$(this).addClass('current');
+			$(this).parent('li').siblings().find('.current').removeClass('current');
+			$(this).parents('.navgroup').siblings().find('.current').removeClass('current');
+		});
+	}
+</script>

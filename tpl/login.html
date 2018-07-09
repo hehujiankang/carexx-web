@@ -1,0 +1,29 @@
+<link href="css/login.css" rel="stylesheet" type="text/css" />
+<link href="css/site.css" rel="stylesheet" type="text/css" />
+
+<div class="bodyStyle">
+	<div id="mainBody" style="background-color: #1c77ac">
+		<div id="cloud1" class="cloud"></div>
+		<div id="cloud2" class="cloud"></div>
+	</div>
+
+	<div class="loginbody">
+		<span class="systemlogo"></span>
+		<ng-form name="loginForm" class="loginbox">
+			<ul class="login">
+				<li><input ng-model="data.acctNo" ng-keyup="onEnter($event)" type="text" class="loginuser" placeholder="请输入用户名" /></li>
+				<li><input ng-model="data.loginPass" ng-keyup="onEnter($event)" type="password" class="loginpwd" placeholder="请输入密码" /></li>
+				<li><input ng-click="submit()" class="loginbtn" value="登录" type="button" /></li>
+			</ul>
+			<div class="validation-summary-valid" data-valmsg-summary="true">
+				<ul>
+					<li style="display:none"></li>
+				</ul>
+			</div>
+		</ng-form>
+	</div>
+	<div style="position: absolute; font-size: 14px; height: 25px; bottom: 10px; left: 10px; text-align: center; width: 98%;color:white;">
+		技术支持：上海上晖信息科技有限公司
+	</div>
+</div>
+<script src="js/cloud.js" type="text/javascript"></script>
