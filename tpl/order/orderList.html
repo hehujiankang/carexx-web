@@ -53,7 +53,7 @@
 							<option value="2">发票</option>
 					</select>
 				</li>
-				<li>凭证号：<input type="text" placeholder="请输入凭证号" ng-model="data.receiptOrInvoice"></li>
+				<li>凭证号：<input type="text" placeholder="请输入凭证号" ng-model="data.proofNo"></li>
 				<li><button type="button" class="searchbtn" ng-click="query()" ng-if="ops['O_ORDER_QUERY']"><i class="fa fa-search"></i>&nbsp查询</button></li>
 				<li><button type="button" class="addbtn" ng-click="add()" ng-if="ops['O_ORDER_ADD']"><i class="fa fa-plus"></i>&nbsp新增</button></li>
 				<li><button type="button" class="searchbtn" ng-click="reset()"><i class="fa fa-refresh"></i>&nbsp重置</button></li>
@@ -189,7 +189,8 @@
 			<div class="formrow">
 				
 				<label class="labtext-left" style="width:93px;"><sup class="required-flag">*</sup>所属公司</label>
-				<select ng-model="data.instSysId" style="width: 100px;" required="required">	
+				<select ng-model="data.instSysId" style="width: 100px;" required="required">
+					<option value="">请选择</option>
 					<option ng-repeat="sysItem in instSysList" value="{{sysItem.id}}">{{sysItem.instSysName}}</option>
 				</select>
 				<label class="labtext-left"><sup class="required-flag">*</sup>签单人</label> <input type="text"  ng-model="data.signingPerson"  maxlength="100" placeholder="请输入签单人" required="required"/>
@@ -200,7 +201,7 @@
 					<option value="1">收据</option>
 					<option value="2">发票</option>
 				</select>
-				<label class="labtext-left"><sup class="required-flag">*</sup>发票号/收据号</label> <input type="text"  ng-model="data.receiptOrInvoice"  maxlength="100" placeholder="请输入发票/收据号" required="required"/>
+				<label class="labtext-left"><sup class="required-flag">*</sup>发票号/收据号</label> <input type="text"  ng-model="data.proofNo"  maxlength="100" placeholder="请输入发票/收据号" required="required"/>
 			</div>
 			
 			<div class="fllab">
@@ -224,7 +225,9 @@
 			<div class="formrow">
 				<label class="labtext-left"><sup class="required-flag">*</sup>调整金额(元)</label> <input type="number"  ng-model="data.adjustAmt"  maxlength="100" placeholder="请输入调整金额" required="required"/>
 			</div>
-			
+			<div class="formrow">
+				<label class="labtext-left"><sup class="required-flag">*</sup>发票号/收据号</label> <input type="text"  ng-model="data.proofNo"  maxlength="100" placeholder="请输入发票/收据号" required="required"/>
+			</div>
 			<div class="fllab">
 				<input type="submit" class="submit" value="确认" ng-click="adjust()" ng-disabled="serForm.$invalid" />
 			</div>

@@ -341,7 +341,7 @@ angular.module('app.services', [])
 	};
 	//调整金额
 	orderSvr.adjust = function(data) {
-		return $http.post('customerorder/adjustamt',data);
+		return $http.post('customerorder/adjust',data);
 	};
 	
 

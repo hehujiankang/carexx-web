@@ -30,7 +30,7 @@
 							<option value="2">发票</option>
 					</select>
 				</li>
-				<li>凭证号：<input type="text" placeholder="请输入凭证号" ng-model="data.receiptOrInvoice"></li>
+				<li>凭证号：<input type="text" placeholder="请输入凭证号" ng-model="data.proofNo"></li>
 				<li>病区：
 					<select ng-model="data.inpatientAreaId" >	
 						<option value="">全部</option>
@@ -62,7 +62,7 @@
 						<th class="cell-seq">护工姓名</th>
 						<th class="cell-seq">所属公司</th>
 						<th class="cell-seq">凭证类型</th>
-						<th class="cell-seq" ng-click="sort('receiptOrInvoice')">凭证号<i class="fa fa-arrows-v" ></i></th>
+						<th class="cell-seq" ng-click="sort('proofNo')">凭证号<i class="fa fa-arrows-v" ></i></th>
 						<th class="cell-text" ng-click="sort('serviceStartTime')">开始时间&nbsp<i class="fa fa-arrows-v" ></i></th>
 						<th class="cell-text" ng-click="sort('serviceEndTime')">结束时间&nbsp<i class="fa fa-arrows-v" ></i></th>
 						<th class="cell-seq">总天数</th>
@@ -90,7 +90,7 @@
 						<td class="cell-text">{{item.serviceStartTime| date:'yyyy-MM-dd HH:mm:ss'}}</td>
 						<td class="cell-text">{{item.serviceEndTime| date:'yyyy-MM-dd HH:mm:ss'}}</td>
 						<td class="cell-seq">{{item.serviceDuration| number:1}}</td>
-						<td class="cell-seq">{{item.holidayNum| number:1}}</td>
+						<td class="cell-seq">{{item.holiday| number:1}}</td>
 						<td class="cell-seq">{{item.orderAmt+item.orderAdjustAmt| number:2}}</td>
 						<td class="cell-seq">{{item.orderAdjustAmt| number:2}}</td>
 						<td class="cell-seq">{{item.staffSettleAmt| number:2}}</td>

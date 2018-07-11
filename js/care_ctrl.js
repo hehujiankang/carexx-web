@@ -213,10 +213,16 @@ angular.module('app.controllers', [])
 	.controller('SchedulePopupCtrl', function($scope, $uibModalInstance, OrderSvr, LocalStorageProvider, transmitData,CompanySvr,$timeout) {
 		
 		$scope.data = transmitData;
-		$scope.data.adjustAmt='';
+		$scope.data.adjustAmt=transmitData.adjustAmt;
 		$scope.voucherNo='';
-		$scope.data.instSysId="1";
+		$scope.data.instSysId="";
 		$scope.data.proofType="1";
+		if($scope.data.proofType=="1"){
+			$scope.data.proofNo=$scope.data.receiptNo;
+		}else{
+			$scope.data.proofNo=$scope.data.invoiceNo;
+		}
+
 
 		$scope.schList = [];
 
@@ -316,13 +322,13 @@ angular.module('app.controllers', [])
 				});
 		}
 		
-		$scope.adjust=function(){	
+		$scope.adjust=function(){				
 			$scope.data.adjustAmt=$scope.data.adjustAmt.toFixed(2);
 			showLoading();
 			OrderSvr.adjust($scope.data).success(function(res) {
 					hideLoading();
 					if(res.code == 200) {
-						alert('调整金额成功');
+						alert('调整成功');
 						$uibModalInstance.dismiss('cancel');						
 					} else {
 						alert(res.errorMsg);
@@ -1250,9 +1256,9 @@ angular.module('app.controllers', [])
 		}
 
 		$scope.init = function() {
-			CareserSvr.query().success(function(res) {
+			CareserSvr.listAll().success(function(res) {
 				if(res.code == 200) {
-					$scope.serviceList = res.data.items;
+					$scope.serviceList = res.data;
 				} else {
 					alert(res.errorMsg);
 				}
@@ -2752,8 +2758,7 @@ angular.module('app.controllers', [])
 						$scope.totalzje =$scope.totalzje+$scope.incomeList[i].orderAmt+$scope.incomeList[i].orderAdjustAmt;
 						$scope.totalddtz =$scope.totalddtz+$scope.incomeList[i].orderAdjustAmt;
 						$scope.incomeList[i].orderNum=i+1;
-						$scope.incomeList[i].holidayNum=($scope.incomeList[i].orderAmt/$scope.incomeList[i].servicePrice)-Math.abs($scope.incomeList[i].serviceDuration)
-						$scope.totalHolidayDay =$scope.totalHolidayDay+$scope.incomeList[i].holidayNum
+						$scope.totalHolidayDay =$scope.totalHolidayDay+$scope.incomeList[i].holiday
 					}
 					
 				} else {
