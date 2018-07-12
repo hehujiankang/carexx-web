@@ -212,12 +212,15 @@ angular.module('app.controllers', [])
 	//订单弹出框
 	.controller('SchedulePopupCtrl', function($scope, $uibModalInstance, OrderSvr, LocalStorageProvider, transmitData,CompanySvr,$timeout) {
 		
+		$scope.voucherNo='';
 		$scope.data = transmitData;
 		$scope.data.adjustAmt=transmitData.adjustAmt;
-		$scope.voucherNo='';
-		$scope.data.instSysId="";
-		$scope.data.proofType="1";		
 
+		if(transmitData.proofType=="1"){
+			$scope.data.proofNo=$scope.data.receiptNo;
+		}else{
+			$scope.data.proofNo=$scope.data.invoiceNo;
+		}		
 
 		$scope.schList = [];
 
@@ -324,6 +327,11 @@ angular.module('app.controllers', [])
 		
 		$scope.adjust=function(){				
 			$scope.data.adjustAmt=$scope.data.adjustAmt.toFixed(2);
+			if($scope.data.proofType=="1"){
+				$scope.data.receiptNo=$scope.data.proofNo;
+			}else{
+				$scope.data.invoiceNo=$scope.data.proofNo;
+			}
 			showLoading();
 			OrderSvr.adjust($scope.data).success(function(res) {
 					hideLoading();
