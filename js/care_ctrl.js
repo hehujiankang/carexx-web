@@ -216,12 +216,7 @@ angular.module('app.controllers', [])
 		$scope.data.adjustAmt=transmitData.adjustAmt;
 		$scope.voucherNo='';
 		$scope.data.instSysId="";
-		$scope.data.proofType="1";
-		if($scope.data.proofType=="1"){
-			$scope.data.proofNo=$scope.data.receiptNo;
-		}else{
-			$scope.data.proofNo=$scope.data.invoiceNo;
-		}
+		$scope.data.proofType="1";		
 
 
 		$scope.schList = [];
@@ -308,6 +303,11 @@ angular.module('app.controllers', [])
 		}
 		
 		$scope.complete=function(){	
+			if($scope.data.proofType=="1"){
+				$scope.data.receiptNo=$scope.data.proofNo;
+			}else{
+				$scope.data.invoiceNo=$scope.data.proofNo;
+			}
 			showLoading();
 			OrderSvr.complete($scope.data).success(function(res) {
 					hideLoading();
