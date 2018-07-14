@@ -466,7 +466,7 @@ angular.module('app.controllers', [])
 	})
 
 	/*人员档案*/
-	.controller("StaffListCtrl", function($scope, $state, StaffSvr, LocalStorageProvider,WorkTypeSvr) {
+	.controller("StaffListCtrl", function($scope, $state, StaffSvr, LocalStorageProvider, GlobalConst, WorkTypeSvr) {
 		$scope.data = {};
 
 		$scope.pagerConf = {
@@ -500,6 +500,12 @@ angular.module('app.controllers', [])
 					alert(res.errorMsg);
 				}
 			});
+		}
+		
+		$scope.exportReport= function(){
+			$scope.data.token=LocalStorageProvider.get(GlobalConst.AUTH_TOKEN_CACHE_NAME, "");
+			$scope.urlStr="inststaff/export_inststaff";
+			post($scope.urlStr,$scope.data);		
 		}
 
 		$scope.add = function() {

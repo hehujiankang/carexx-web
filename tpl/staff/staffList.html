@@ -9,6 +9,7 @@
 		<div class="filterForm">
 			<ul class="clearfix">
 				<li>姓名：<input type="text" placeholder="请输入姓名" ng-model="data.realName"></li>
+				<li>身份证号：<input type="text" placeholder="请输入身份证号" ng-model="data.idNo"></li>
 				<li>人员性质：
 					<select ng-model="data.personType">
 							<option value="">全部</option>
@@ -31,6 +32,7 @@
 				</li>
 				<li><button type="button" class="searchbtn" ng-click="query()" ng-if="ops['O_STAFF_QUERY']"><i class="fa fa-search"></i>&nbsp查询</button></li>
 				<li><button type="button" class="addbtn" ng-click="add()" ng-if="ops['O_STAFF_ADD']"><i class="fa fa-plus"></i>&nbsp新增</button></li>
+				<li><button type="button" class="searchbtn" ng-click="exportReport()" ng-if="ops['O_STAFF_EXPORT']"><i class="fa fa-search"></i>&nbsp导出</button></li>
 			</ul>
 		</div>
 		<div class="signList">			
